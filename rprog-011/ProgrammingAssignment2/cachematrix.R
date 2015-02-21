@@ -1,6 +1,6 @@
 # Coursera rprog-011
 #   Mark Pratley
-#     Assignment #3
+#     Assignment #2
 #       20-Feb-2015
 
 ## A pair of functions to cache the inverse of a matrix
