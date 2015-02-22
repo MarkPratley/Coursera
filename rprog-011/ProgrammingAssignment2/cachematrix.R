@@ -22,9 +22,9 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## cacheSolve checks to see if there is a stored inverse value, if there is
-##  it is retrieved and returned, otherwise the inverse is calculated,
-##  stored and returned
+## cacheSolve checks to see if there is a stored inverse value.
+##  if there is then it is retrieved and returned,
+##  otherwise the inverse is calculated, stored and returned
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
