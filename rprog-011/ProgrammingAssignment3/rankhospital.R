@@ -1,4 +1,3 @@
-
 # Coursera rprog-011
 #   Mark Pratley
 #     Assignment #3
