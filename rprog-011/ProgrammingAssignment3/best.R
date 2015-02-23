@@ -3,10 +3,12 @@
 #     Assignment #3
 #       21-Feb-2015
 
-
+# Function to return the best hospital in the required state
+#  for the chosen outcome
 
 best <- function(state, outcome) {
     
+    # Temp Supress warnings 
     options(warn=-1)
 
     ## Read outcome data
@@ -15,6 +17,7 @@ best <- function(state, outcome) {
     data[, 17] <- as.numeric(data[, 17])
     data[, 23] <- as.numeric(data[, 23])
     
+    # Turn warnings back on
     options(warn=1)
 
     ## Check that state and outcome are valid
@@ -25,6 +28,7 @@ best <- function(state, outcome) {
     # Create vector for outcomes and their columns
     outcomes = c("heart attack"=11, "heart failure"=17, "pneumonia"=23)
     
+    # Check if the required outcome is valid
     if ( is.na(outcomes[outcome]) ) {
         stop("invalid outcome")
     }
