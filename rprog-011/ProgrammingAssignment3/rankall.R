@@ -46,9 +46,10 @@ rankall <- function(outcome, num = "best") {
     states = unique(data[,"State"])
     
     # Create output
-    hosps <- c()
+    hosps = vector("character",length(states))
     
     # Loop through states & add each ones nth value for the outcome
+    i = 1;
     for (state in states) {
         
         # order by outcome & hospital
@@ -59,7 +60,9 @@ rankall <- function(outcome, num = "best") {
         if (num=="worst")
             n = nrow(sdata)
 
-        hosps = c(hosps,sdata[n,1])
+        hosps[i] = sdata[n,1]
+
+        i = i+1
     }
     
     # Create df result of hospitals & states
