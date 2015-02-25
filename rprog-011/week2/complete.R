@@ -22,24 +22,11 @@ complete <- function(directory, id = 1:332) {
     # Get Files
     files = list.files(directory, full.names=TRUE)
     
-    # our subset
-#    files = files[id] # Doing in loop instead
+    # Get nobs
+    nobs = sapply(files[id], function(alist) sum(complete.cases(read.csv(alist))))
     
-    # Create a new vector of the right size for 'nobs' numbers
-    nobs <- rep(0, length(id))
+    # Put [id, nobs] into a df with an integer index
+    result <- data.frame(id = id, nobs = nobs, row.names=NULL)
 
-    # Counter
-    count = 1
-    
-    # Read the (selected) files into a list
-    for (i in id) {
-        
-        f = read.csv(files[i])
-        nobs[count] = sum( complete.cases(f) )
-        count = count + 1
-    }
-    
-    result <- data.frame(id = id, nobs = nobs)
-    
     return(result)
-}
+}    
