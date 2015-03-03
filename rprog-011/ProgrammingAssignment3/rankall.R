@@ -26,51 +26,30 @@ rankall <- function(outcome, num = "best") {
     
     # Shrink data to relevant bits
     data = data[,c(2,7,outcol)]
-    
+    names(data) <- c("Name", "State", "Outcome")
+
     # Get n
     # Parse num into n
+    bDecreasing <- FALSE
     if (num=="best") {
-        n = 1
+        n <- 1
     } else if (num=="worst") {
-        n = nrow(data)
+        n <- 1
+        bDecreasing <- TRUE
     } else if (is.numeric(num)) {
-        n = num;
+        n <- num;
     } else {
         stop("Invalid Num")
     }
-    
-    if (n>nrow(data))
-        return (NA)
-    
-    # Get states
-    states = unique(data[,"State"])
-    
-    # Create output
-    hosps = vector("character",length(states))
-    
-    # Loop through states & add each ones nth value for the outcome
-    i = 1;
-    for (state in states) {
+
+    # Split data into states then use sapply f(x) to order each state
+    #  and select the (num)th state
+    # Returns a character vector hosps
+    hosps <- sapply(split(data, data$State), function(state) {
         
-        # order by outcome & hospital
-        sdata = data[data$State==state,]
-        sdata = sdata[order(sdata[,3], sdata[,1]),]
-
-        # Can only find out worst here
-        if (num=="worst")
-            n = nrow(sdata)
-
-        hosps[i] = sdata[n,1]
-
-        i = i+1
-    }
+        state[ order(state$Outcome, state$Name, decreasing=bDecreasing)[n], ]$Name
+    })
     
     # Create df result of hospitals & states
-    result = data.frame(hosps,states)
-    colnames(result) <- c("hospital", "state")
-        
-    
-    ## Return a data frame with the hospital names and the
-    ## (abbreviated) state name
-    return (result)
+    result <- data.frame(hospital=hosps,state=names(hosps))
 }
