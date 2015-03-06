@@ -11,14 +11,11 @@ rankall <- function(outcome, num = "best") {
     ## Read outcome data
     data <- read.csv("outcome-of-care-measures.csv",
                      colClasses = "character", na.strings="Not Available")
-    data[, 11] <- as.numeric(data[, 11])
-    data[, 17] <- as.numeric(data[, 17])
-    data[, 23] <- as.numeric(data[, 23])
     
     # Create vector for outcomes and their columns
     outcomes = c("heart attack"=11, "heart failure"=17, "pneumonia"=23)
     outcol   = outcomes[outcome]
-
+    
     # Check if the required outcome is valid
     if ( is.na( outcol ) ) {
         stop("invalid outcome")
@@ -27,7 +24,9 @@ rankall <- function(outcome, num = "best") {
     # Shrink data to relevant bits
     data = data[,c(2,7,outcol)]
     names(data) <- c("Name", "State", "Outcome")
-
+    
+    data$Outcome <- as.numeric(data$Outcome)
+    
     # Get n
     # Parse num into n
     bDecreasing <- FALSE
