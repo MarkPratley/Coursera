@@ -35,19 +35,38 @@ getFiles <- function() {
 ## File reading and plotting begins here ##
 
 # Get Files  will be downloaded if required
-NEI <- getFile("summarySCC_PM25.rds")
+if (!exists("NEI"))
+    NEI <- getFile("summarySCC_PM25.rds")
+if (!exists("SCC"))
 SCC <- getFile("Source_Classification_Code.rds")
+
+# TESTING TEMP
+bTESTING = TRUE
+nTesting = 100000
+if (bTESTING & nrow(NEI)<nTesting) {
+    x <- sample(1:nrow(NEI), nTesting, replace=F)
+    NEI <- NEI[x,]
+}
+# End Temp
 
 # Create year category
 NEI$year.cat <- factor(NEI$year)
 
-
-
+# Check Folder
+# Check if dir exists, if not create
+if (! file.exists("./myplots")) {
+    dir.create("./myplots")
+}
 #Create PNG device
 png("myplots/plot1.png", width = 480, height = 480,  bg = "transparent")
 
 #Draw the histogram to the PNG device
-
+years <- tapply(NEI$E, NEI$year.cat, sum)
+barplot(years,
+        main = expression('Total Emission of PM'[2.5]),
+        xlab = "Year",
+        ylab = "Total Emissions",
+        col = "brown")
 
 #Close PNG device
 dev.off()
