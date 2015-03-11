@@ -11,20 +11,21 @@ See the Assignment below for the criteria.
 ### Files
 
 
-[readme.md](readme.md)  - This File
-[plot1.R](plot1.R)  - Total Emissions
-[plot2.R](plot2.R)  - Total Emission in Baltimore
-[plot3.R](plot3.R)  - Emission Trend by type in Baltimore
-[plot4.R](plot4.R)  - Coal Emission Trend over Time
-[plot5.R](plot5.R)  - Motor Vehicle Emission Trend in Baltimore over Time
-[plot6.R](plot6.R)  - Motor Vehicle Emission Trend Comparison: Baltimore vs LA County
+* [readme.md](readme.md)  - This File
+* [plot1.R](plot1.R)  - Total Emissions
+* [plot2.R](plot2.R)  - Total Emission in Baltimore
+* [plot3.R](plot3.R)  - Emission Trend by type in Baltimore
+* [plot4.R](plot4.R)  - Coal Emission Trend over Time
+* [plot5.R](plot5.R)  - Motor Vehicle Emission Trend in Baltimore over Time
+* [plot6.R](plot6.R)  - Motor Vehicle Emission Trend Comparison: Baltimore vs LA County
 
-[/myplots/plot1.png](/myplots/plot1.png) - Output of plot1.R
-[/myplots/plot2.png](/myplots/plot2.png) - Output of plot2.R
-[/myplots/plot3.png](/myplots/plot3.png) - Output of plot3.R
-[/myplots/plot4.png](/myplots/plot4.png) - Output of plot4.R
-[/myplots/plot5.png](/myplots/plot5.png) - Output of plot5.R
-[/myplots/plot6.png](/myplots/plot6.png) - Output of plot6.R
+* [myplot/](myplots/)
+	* [myplots/plot1.png](myplots/plot1.png) - Output of plot1.R
+	* [myplots/plot2.png](myplots/plot2.png) - Output of plot2.R
+	* [myplots/plot3.png](myplots/plot3.png) - Output of plot3.R
+	* [myplots/plot4.png](myplots/plot4.png) - Output of plot4.R
+	* [myplots/plot5.png](myplots/plot5.png) - Output of plot5.R
+	* [myplots/plot6.png](myplots/plot6.png) - Output of plot6.R
 
 
 ## Assignment Outline
