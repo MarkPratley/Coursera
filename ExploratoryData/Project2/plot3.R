@@ -5,14 +5,16 @@
 #        09-Mar-2015
 
 library(dplyr)
+library(ggplot2)
 
 # magic url & files names
-files   <- c("summarySCC_PM25.rds", "Source_Classification_Code.rds")
+NEIfile <- "summarySCC_PM25.rds"
+SCCfile <- "Source_Classification_Code.rds"
 url     <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip"
 zipFile <- "data.zip"
 
 # Reads & Cleans Files - (Downloads if required)
-#  Returns a list containing the 2 files
+#  Returns the file
 getFile <- function(file) {
     
     if (!file.exists(file)) {
@@ -34,25 +36,19 @@ getFiles <- function() {
     unzip(zipFile, overwrite = TRUE)
 }
 
-## File reading and plotting begins here ##
+## -----------------------------------------
 
-# Get Files  will be downloaded if required
+# Get Files. If not already in memory then...
+#  Load if available or downloaded and load if not
 if (!exists("NEI"))
-    NEI <- getFile("summarySCC_PM25.rds")
+    NEI <- getFile( NEIfile )
+
 if (!exists("SCC"))
-    SCC <- getFile("Source_Classification_Code.rds")
+    SCC <- getFile( SCCfile )
 
-# TESTING TEMP
-bTESTING = TRUE
-nTesting = 100000
-if (bTESTING & nrow(NEI)<nTesting) {
-    x <- sample(1:nrow(NEI), nTesting, replace=F)
-    NEI <- NEI[x,]
-}
-# End Temp
-
-# Create year category
+# Create useful factors
 NEI$year.cat <- factor(NEI$year)
+NEI$type <- factor(NEI$type)
 
 # Check Folder
 # Check if dir exists, if not create
@@ -62,7 +58,32 @@ if (! file.exists("./myplots")) {
 #Create PNG device
 png("myplots/plot3.png", width = 480, height = 480,  bg = "transparent")
 
-#Draw the histogram to the PNG device
+# Filter for Baltimore
+NEI_Baltimore <- filter(NEI, fips == "24510")
+
+# Group by type and year. Sum Emissions
+NEI_B_by_type_year <- NEI_Baltimore %>%
+    group_by(type, year.cat) %>%    
+    summarise(
+        Sum = sum(Emissions)
+    )
+
+# Create a plot
+p <- ggplot(data=NEI_B_by_type_year,
+       aes(x = year.cat, y=log(Sum), fill=year.cat)) +
+        geom_bar( stat="identity") +
+        theme(legend.position = 'none') +
+        facet_wrap(~ type) +
+        geom_smooth(method = "lm",
+                      se=FALSE,
+                      color="red",
+                      size=1.2,
+                      aes(group=1)) +
+        xlab("Year") +
+        ylab("log(Emissions)") +
+        ggtitle("Emission Trend by Type over Time in Baltimore")
+
+print(p)
 
 #Close PNG device
 dev.off()

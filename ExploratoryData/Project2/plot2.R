@@ -5,14 +5,16 @@
 #        09-Mar-2015
 
 library(dplyr)
+library(ggplot2)
 
 # magic url & files names
-files   <- c("summarySCC_PM25.rds", "Source_Classification_Code.rds")
+NEIfile <- "summarySCC_PM25.rds"
+SCCfile <- "Source_Classification_Code.rds"
 url     <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip"
 zipFile <- "data.zip"
 
 # Reads & Cleans Files - (Downloads if required)
-#  Returns a list containing the 2 files
+#  Returns the file
 getFile <- function(file) {
     
     if (!file.exists(file)) {
@@ -34,22 +36,15 @@ getFiles <- function() {
     unzip(zipFile, overwrite = TRUE)
 }
 
-## File reading and plotting begins here ##
+## -----------------------------------------
 
-# Get Files  will be downloaded if required
+# Get Files. If not already in memory then...
+#  Load if available or downloaded and load if not
 if (!exists("NEI"))
-    NEI <- getFile("summarySCC_PM25.rds")
-if (!exists("SCC"))
-    SCC <- getFile("Source_Classification_Code.rds")
+    NEI <- getFile( NEIfile )
 
-# TESTING TEMP
-bTESTING = TRUE
-nTesting = 100000
-if (bTESTING & nrow(NEI)<nTesting) {
-    x <- sample(1:nrow(NEI), nTesting, replace=F)
-    NEI <- NEI[x,]
-}
-# End Temp
+if (!exists("SCC"))
+    SCC <- getFile( SCCfile )
 
 # Create year category
 NEI$year.cat <- factor(NEI$year)
