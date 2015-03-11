@@ -32,23 +32,20 @@ See the Assignment below for the criteria.
 #### Plot 1 - Total Emissions
 ![Plot1](myplots/plot1.png)
 
-#### Plot 1 - Total Emissions
-![plot1.R](plot1.R)
-
 #### Plot 2 - Total Emission in Baltimore
-![plot2.R](plot2.R)
+![Plot2](myplots/plot2.png)
 
 #### Plot 3 - Emission Trend by type in Baltimores
-![plot3.R](plot3.R)
+![Plot3](myplots/plot3.png)
 
 #### Plot 4 - Coal Emission Trend over Time
-![plot4.R](plot4.R)
+![Plot4](myplots/plot4.png)
 
 #### Plot 5 - Motor Vehicle Emission Trend in Baltimore over Time
-![plot5.R](plot5.R)
+![Plot5](myplots/plot5.png)
 
 #### Plot 6 - Motor Vehicle Emission Trend Comparison: Baltimore vs LA County
-![plot6.R](plot6.R)
+![Plot6](myplots/plot6.png)
 
 
 ## Assignment Outline
