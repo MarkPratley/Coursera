@@ -9,35 +9,36 @@
 * [Execution](#Execution)
 * [Project Specifications](#Project-Specifications)
 
-
-## Description <a id="Description"></a>
+<a id="Description"></a>
+## Description
 
 This is my project for the [Getting and Cleaning Data](https://www.coursera.org/course/getdata) Coursera module.
 
 This project uses [raw data](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) from the field of [wearable computing](http://www.insideactivitytracking.com/data-science-activity-tracking-and-the-battle-for-the-worlds-top-sports-brand/) and processes it into a unified, readable and [tidy format](http://vita.had.co.nz/papers/tidy-data.pdf) before outputting a file containing the average measurements of the data.
 
-
-## Files <a id="Files"></a>
+<a id="Files"></a>
+## Files
 
 * [readme.md](readme.md) - This file
 * [run_analysis.R](run_analysis.R) - The R file to transform the data
 * [codebook.md](codebook.md) - A description of the variables, data, and transformations.
 
-
-## Requirements <a id="Requirements"></a>
+<a id="Requirements"></a>
+## Requirements
 
 * [Data](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip) downloaded and unzipped into ./UCI HAR Dataset/
 * R Package dplyr installed
 
-## Execution <a id="Execution"></a>
+<a id="Execution"></a>
+## Execution
 
 To run the project open R and change to the relevant working directory (the one with run_analysis.R and UCI HAR Dataset/)
 and type:
 
 source("run_analysis.R")
 
-
-## Project Specifications  <a id="Project-Specifications"></a>
+<a id="Project-Specifications"></a>
+## Project Specifications
 
 These instructions are taken from [here](https://class.coursera.org/getdata-012/human_grading/view/courses/973499/assessments/3/submissions) 
 
