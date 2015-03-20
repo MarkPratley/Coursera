@@ -4,6 +4,8 @@
 #       run_analysis.R
 #        17-Mar-2015
 
+library(dplyr)
+
 # You should create one R script called run_analysis.R that
 # does the following:
 
@@ -30,7 +32,7 @@ xtrain <- read.table("./UCI HAR Dataset/train/X_train.txt" )
 ytrain <- read.table("./UCI HAR Dataset/train/y_train.txt")
 subtrain <- read.table("./UCI HAR Dataset/train/subject_train.txt")
 
-# Combine data
+# Combine test & train data
 subject      <- rbind(subtest, subtrain)
 activity     <- rbind(ytest, ytrain)
 measurements <- rbind(xtest, xtrain)
@@ -55,7 +57,7 @@ activity <- inner_join(activity, act_labels, by = "V1")$V2
 mean_std$V2 <- gsub("\\(\\)", "", mean_std$V2 )
 names(measurements) <- mean_std$V2
 
-# Create 1 unified data structure
+# Create 1 unified data structure (fulfills criteria 1)
 tidy_data_mean_std <- cbind(subject, activity, measurements)
 
 # With nicer names
