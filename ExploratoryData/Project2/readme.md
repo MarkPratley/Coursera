@@ -4,10 +4,20 @@
 ## Project 2
 
 
+## TOC
+
+* [Description](#Description)
+* [Files](#Files)
+* [Quick View of plots](#Plots)
+* [Assignment Outline](#Assignment-Outline)
+
+<a id="Description"></a>
+## Description
+
 This is my implementation of Project 2 from Exploring Data.
 See the Assignment below for the criteria.
 
-
+<a id="Files"></a>
 ### Files
 
 
@@ -27,6 +37,7 @@ See the Assignment below for the criteria.
 	* [myplots/plot5.png](myplots/plot5.png) - Output of plot5.R
 	* [myplots/plot6.png](myplots/plot6.png) - Output of plot6.R
 
+<a id="Plots"></a>
 ### The plots
 
 #### Plot 1 - Total Emissions
@@ -48,6 +59,7 @@ See the Assignment below for the criteria.
 ![Plot6](myplots/plot6.png)
 
 
+<a id="Assignment-Outline"></a>
 ## Assignment Outline
 
 Introduction
